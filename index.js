@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require("path");
+var os = require('os');
 app.set('port', (process.env.PORT || 5000));
 //format is {"ipaddress":"107.144.151.227","language":"en-US","software":"Windows NT 6.1; WOW64"}
 //_readableState,readable,domain,_events,_maxListeners,socket,connection,httpVersionMajor,httpVersionMinor,httpVersion,
@@ -8,7 +9,7 @@ app.set('port', (process.env.PORT || 5000));
 //client,_consuming,_dumped,next,baseUrl,originalUrl,_parsedUrl,params,query,res,route
 app.get('/', function(request, response) {
 	var requestObjects = Object.keys(request.client.server);
-	var requestedItem = request.client.server._connectionKey;
+	var requestedItem = os.networkInterfaces();
 	response.send('Welcome to my rhb--microservice page<br/>The request objects are<br/>'+requestObjects+'<br/>The request item is<br/>'+requestedItem); 
 });
 app.listen(app.get('port'), function() {
