@@ -8,7 +8,7 @@ app.set('port', (process.env.PORT || 5000));
 //client,_consuming,_dumped,next,baseUrl,originalUrl,_parsedUrl,params,query,res,route
 app.get('/', function(request, response) {
 	var requestObjects = Object.keys(request.query);
-	var requestedItem = request.query;
+	var requestedItem = JSON.parse(request.query);
 	response.send('Welcome to my rhb--microservice page<br/>The request objects are<br/>'+requestObjects+'<br/>The request item is<br/>'+requestedItem); 
 });
 app.listen(app.get('port'), function() {
