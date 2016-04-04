@@ -99,6 +99,7 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port')); 
 });  
 =======
+<<<<<<< HEAD
 var express = require('express');
 var app = express(); 
 var path = require("path");
@@ -115,4 +116,22 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+=======
+var express = require('express');
+var app = express(); 
+var path = require("path");
+var os = require('os');
+app.set('port', (process.env.PORT || 5000));
+//format is {"ipaddress":"107.144.151.227","language":"en-US","software":"Windows NT 6.1; WOW64"}
+app.get('/', function(request, response) {
+	var requestObjects = Object.keys(request.client.server);
+	var prerequestedItem = os.networkInterfaces()
+	var requestedItem = JSON.stringify(prerequestedItem);
+	var netAddress = JSON.stringify(prerequestedItem.eth0[0].address);
+	response.send('Welcome to my rhb--microservice page<br/>The request objects are<br/>'+requestObjects+'<br/>The netAddress is<br/>'+netAddress); 
+});
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+>>>>>>> 02155d3ab220527448c899db6377a809fc1408e3
 >>>>>>> 7083a9ee6999f0d907549224fc53b9bc908adb39
